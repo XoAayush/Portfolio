@@ -1,7 +1,7 @@
 export const activities = [
   {
     id: 1,
-    role: "Technical Member",
+    role: "Technical  Head",
     organization: "Matrix Club",
     department: "Department of Computer Application",
     period: "Sept 2023 – June 2025",

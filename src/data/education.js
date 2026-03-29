@@ -2,8 +2,8 @@ export const education = [
   {
     id: 1,
     degree: "Master of Computer Applications (MCA)",
-    institution: "Chitkara University",
-    location: "Rajpura, Punjab",
+    institution: "Amity University",
+    location: "Mohali, Punjab",
     period: "2025 – Present",
     status: "ongoing",
     icon: "FaGraduationCap",
