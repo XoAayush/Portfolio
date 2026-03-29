@@ -1,0 +1,88 @@
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+  transition: all 0.3s ease;
+}
+.navbar--scrolled {
+  background: rgba(10, 10, 10, 0.95);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+.navbar__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar__logo {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--gold-primary);
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  transition: text-shadow 0.3s ease;
+}
+.navbar__logo:hover {
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 0 0 40px rgba(255, 215, 0, 0.2);
+}
+.navbar__logo-text { font-weight: 700; }
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+.navbar__link {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--gold-primary);
+  transition: width 0.3s ease;
+}
+.navbar__link:hover, .navbar__link--active { color: var(--gold-primary); }
+.navbar__link:hover::after, .navbar__link--active::after { width: 100%; }
+.navbar__hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--gold-primary);
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+}
+
+@media (max-width: 768px) {
+  .navbar__container { padding: 0 var(--space-md); }
+  .navbar__hamburger { display: flex; align-items: center; }
+  .navbar__links {
+    position: fixed;
+    top: 70px; left: 0; right: 0;
+    background: rgba(10, 10, 10, 0.97);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: var(--space-xl) 0;
+    gap: var(--space-md);
+    transform: translateY(-120%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+  }
+  .navbar__links--open { transform: translateY(0); }
+  .navbar__link { font-size: 0.85rem; padding: 12px 0; }
+}

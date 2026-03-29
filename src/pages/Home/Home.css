@@ -1,0 +1,184 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: var(--bg-primary);
+  overflow: hidden;
+  padding-top: 70px;
+}
+
+/* HUD Grid */
+.hero__grid-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,215,0,0.04) 39px, rgba(255,215,0,0.04) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,215,0,0.04) 39px, rgba(255,215,0,0.04) 40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Gold glows */
+.hero__glow {
+  position: absolute;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero__glow--top {
+  top: -100px; right: -100px;
+  background: radial-gradient(circle, rgba(255,215,0,0.12), transparent 70%);
+}
+.hero__glow--bottom {
+  bottom: -100px; left: -100px;
+  background: radial-gradient(circle, rgba(255,215,0,0.08), transparent 70%);
+}
+
+/* Status badge */
+.hero__status {
+  position: absolute;
+  top: 90px; left: 40px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--cyan-accent);
+  letter-spacing: 2px;
+  z-index: 5;
+  animation: statusBlink 3s infinite;
+}
+@keyframes statusBlink {
+  0%, 90%, 100% { opacity: 1; }
+  95% { opacity: 0; }
+}
+
+/* Content */
+.hero__content {
+  text-align: center;
+  z-index: 5;
+  position: relative;
+}
+
+/* Glitch Name */
+.hero__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-hero);
+  color: var(--gold-primary);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  overflow: hidden;
+}
+.glitch::before {
+  color: var(--cyan-accent);
+  z-index: -1;
+  animation: glitch-1 3s infinite linear alternate-reverse;
+}
+.glitch::after {
+  color: var(--danger-red);
+  z-index: -2;
+  animation: glitch-2 2s infinite linear alternate-reverse;
+}
+@keyframes glitch-1 {
+  0% { clip-path: inset(20% 0 60% 0); transform: translate(-3px, -1px); }
+  20% { clip-path: inset(50% 0 20% 0); transform: translate(3px, 1px); }
+  40% { clip-path: inset(10% 0 70% 0); transform: translate(-2px, 2px); }
+  60% { clip-path: inset(40% 0 30% 0); transform: translate(2px, -1px); }
+  80% { clip-path: inset(80% 0 5% 0); transform: translate(-1px, 2px); }
+  100% { clip-path: inset(5% 0 80% 0); transform: translate(3px, -2px); }
+}
+@keyframes glitch-2 {
+  0% { clip-path: inset(60% 0 10% 0); transform: translate(3px, 1px); }
+  20% { clip-path: inset(20% 0 50% 0); transform: translate(-3px, -1px); }
+  40% { clip-path: inset(70% 0 10% 0); transform: translate(2px, -2px); }
+  60% { clip-path: inset(30% 0 40% 0); transform: translate(-2px, 1px); }
+  80% { clip-path: inset(5% 0 80% 0); transform: translate(1px, -2px); }
+  100% { clip-path: inset(80% 0 5% 0); transform: translate(-3px, 2px); }
+}
+
+.hero__role {
+  font-family: var(--font-body);
+  font-size: 1.8rem;
+  color: var(--gold-secondary);
+  margin-top: 16px;
+  font-weight: 500;
+  min-height: 2.5rem;
+}
+.hero__cursor {
+  color: var(--gold-primary);
+  animation: blink 0.7s infinite;
+}
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.hero__location {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--gold-dim);
+  margin-top: 12px;
+}
+
+.hero__cta {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.hero__socials {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 32px;
+}
+.hero__social-icon {
+  color: var(--gold-primary);
+  transition: all 0.3s ease;
+  padding: 8px;
+}
+.hero__social-icon:hover {
+  text-shadow: 0 0 15px var(--gold-primary);
+  transform: translateY(-3px);
+  filter: drop-shadow(0 0 8px rgba(255,215,0,0.5));
+}
+
+.hero__scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold-dim);
+  animation: bounce 2s infinite;
+  z-index: 5;
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-10px); }
+  60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+@media (max-width: 768px) {
+  .hero__name { letter-spacing: 0.08em; }
+  .hero__role { font-size: 1.3rem; }
+  .hero__status { top: 85px; left: 16px; font-size: 0.65rem; }
+}
+@media (max-width: 480px) {
+  .hero__cta { flex-direction: column; align-items: center; }
+}
