@@ -5,6 +5,6 @@ export const personalInfo = {
   location: "Panchkula, Haryana 134117",
   email: "aayush123.yt@gmail.com",
   phone: "9779121802",
-  github: "https://github.com/aayushsharma",
-  linkedin: "https://linkedin.com/in/aayushsharma",
+  github: "https://github.com/XoAayush",
+  linkedin: "https://www.linkedin.com/in/aayush-sharma-ba57ba225",
 };
