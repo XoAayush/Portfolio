@@ -21,7 +21,7 @@ const About = () => {
         <div className="about__left" data-aos="fade-right">
           <div className="about__avatar">
             <div className="about__avatar-inner">
-              <div className="about__avatar-placeholder">AS</div>
+              <img src="/aayush.png" alt="Aayush Sharma" className="about__avatar-img" />
             </div>
           </div>
           <div className="about__stats">
@@ -37,7 +37,7 @@ const About = () => {
             With a strong foundation in web technologies, I build clean, responsive, and user-centric digital experiences.
           </p>
           <p className="about__bio">
-            Currently pursuing my Master of Computer Applications at Chitkara University after completing my BCA
+            Currently pursuing my Master of Computer Applications at Amity University after completing my BCA
             with a CGPA of 8.32. I focus on React-based development and am constantly expanding my skill set.
           </p>
           <p className="about__bio">
