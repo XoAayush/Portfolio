@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin, FaPaperPlane, FaCheckCircle } from 'react-icons/fa';
+import { FaEnvelope, FaMapMarkerAlt, FaGithub, FaLinkedin, FaPaperPlane, FaCheckCircle } from 'react-icons/fa';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
 import { personalInfo } from '../../data/personalInfo';
 import './Contact.css';
@@ -35,10 +35,7 @@ const Contact = () => {
               <FaEnvelope className="contact__info-icon" />
               <a href={`mailto:${personalInfo.email}`} className="contact__info-text">{personalInfo.email}</a>
             </div>
-            <div className="contact__info-row">
-              <FaPhone className="contact__info-icon" />
-              <span className="contact__info-text">{personalInfo.phone}</span>
-            </div>
+
             <div className="contact__info-row">
               <FaMapMarkerAlt className="contact__info-icon" />
               <span className="contact__info-text">{personalInfo.location}</span>

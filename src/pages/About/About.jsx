@@ -1,4 +1,4 @@
-import { FaMapMarkerAlt, FaEnvelope, FaPhone, FaGraduationCap, FaBriefcase, FaGlobe } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaEnvelope, FaGraduationCap, FaBriefcase, FaGlobe } from 'react-icons/fa';
 import SectionHeader from '../../components/SectionHeader/SectionHeader';
 import { personalInfo } from '../../data/personalInfo';
 import './About.css';
@@ -6,8 +6,8 @@ import './About.css';
 const About = () => {
   const infoChips = [
     { icon: <FaMapMarkerAlt />, label: 'Location', value: 'Panchkula, HR' },
-    { icon: <FaEnvelope />, label: 'Email', value: personalInfo.email },
-    { icon: <FaPhone />, label: 'Phone', value: personalInfo.phone },
+    { icon: <FaEnvelope />, label: 'Email', value: personalInfo.email, link: `mailto:${personalInfo.email}` },
+
     { icon: <FaGraduationCap />, label: 'University', value: 'Chitkara University' },
     { icon: <FaBriefcase />, label: 'Status', value: 'Open to Work' },
     { icon: <FaGlobe />, label: 'Languages', value: 'English / Hindi / Punjabi' },
@@ -53,7 +53,11 @@ const About = () => {
             <span className="about__chip-icon">{chip.icon}</span>
             <div className="about__chip-text">
               <span className="about__chip-label">{chip.label}</span>
-              <span className="about__chip-value">{chip.value}</span>
+              {chip.link ? (
+                <a href={chip.link} className="about__chip-value about__chip-link">{chip.value}</a>
+              ) : (
+                <span className="about__chip-value">{chip.value}</span>
+              )}
             </div>
           </div>
         ))}
