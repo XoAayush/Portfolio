@@ -28,7 +28,15 @@
   font-size: 1rem;
   color: var(--text-primary);
 }
-.contact__info-text:hover { color: var(--gold-primary); }
+a.contact__info-text {
+  color: var(--gold-primary);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+a.contact__info-text:hover {
+  color: var(--gold-secondary);
+  text-decoration: underline;
+}
 .contact__socials { display: flex; gap: var(--space-md); }
 .contact__social-btn {
   display: inline-flex;

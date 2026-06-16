@@ -48,6 +48,10 @@
   position: relative;
   transition: color 0.3s ease;
 }
+.navbar__link:focus-visible {
+  outline: 2px solid var(--gold-primary);
+  outline-offset: 3px;
+}
 .navbar__link::after {
   content: '';
   position: absolute;

@@ -20,13 +20,8 @@ function ScrollToTop() {
   return null;
 }
 
-function AOSRefresh() {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    AOS.refresh();
-  }, [pathname]);
-  return null;
-}
+/* AOSRefresh removed — AOS.init({ once: true }) handles it;
+   refresh() on every route change was unnecessary work. */
 
 function App() {
   useEffect(() => {
@@ -41,9 +36,12 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <AOSRefresh />
+      {/* Skip-to-content: first focusable element for keyboard users */}
+      <a href="#main-content" className="skip-to-content">
+        Skip to main content
+      </a>
       <Navbar />
-      <main>
+      <main id="main-content" aria-label="Portfolio content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
