@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
+/* Google Fonts now loaded via <link> in index.html — no @import here */
 
 :root {
   --bg-primary: #0a0a0a;
@@ -10,7 +10,7 @@
   --gold-dim: #B8860B;
   --gold-glow: rgba(255, 215, 0, 0.15);
   --text-primary: #F5F5F5;
-  --text-secondary: #AAAAAA;
+  --text-secondary: #C0C0C0; /* was #AAAAAA — bumped for WCAG AA 4.5:1 contrast */
   --text-accent: #FFD700;
   --border-gold: rgba(255, 215, 0, 0.3);
   --border-dim: rgba(255, 255, 255, 0.07);
@@ -18,7 +18,8 @@
   --danger-red: #FF003C;
 
   --font-display: 'Orbitron', sans-serif;
-  --font-body: 'Rajdhani', sans-serif;
+  --font-body: 'Inter', 'Rajdhani', sans-serif; /* Inter for readability, Rajdhani fallback */
+  --font-ui: 'Rajdhani', sans-serif;             /* Rajdhani kept for UI labels/nav */
   --font-mono: 'Share Tech Mono', monospace;
 
   --fs-hero: clamp(2.5rem, 6vw, 5rem);
@@ -54,7 +55,7 @@ body {
   font-family: var(--font-body);
   font-size: var(--fs-body);
   line-height: 1.6;
-  overflow-x: hidden;
+  /* overflow-x: hidden removed — masks bugs on iOS; fix root causes instead */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -63,6 +64,33 @@ a { text-decoration: none; color: inherit; }
 ul, ol { list-style: none; }
 img { max-width: 100%; display: block; }
 button { font-family: inherit; cursor: pointer; }
+
+/* ── Skip-to-content link ── */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: var(--space-md);
+  z-index: 9999;
+  background: var(--gold-primary);
+  color: var(--bg-primary);
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 12px 24px;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* ── Focus-visible for all interactive elements ── */
+:focus-visible {
+  outline: 2px solid var(--gold-primary);
+  outline-offset: 3px;
+}
 
 ::selection { background: var(--gold-primary); color: var(--bg-primary); }
 ::-moz-selection { background: var(--gold-primary); color: var(--bg-primary); }
@@ -76,7 +104,7 @@ button { font-family: inherit; cursor: pointer; }
   padding: var(--space-3xl) var(--space-xl);
   max-width: 1200px;
   margin: 0 auto;
-  min-height: 100vh;
+  min-height: 100svh; /* was 100vh — 100svh accounts for mobile browser chrome */
   position: relative;
 }
 
@@ -97,6 +125,12 @@ button { font-family: inherit; cursor: pointer; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  position: relative;
+}
+/* Custom focus ring inside clip-path boundary */
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--bg-primary), inset 0 0 0 4px var(--gold-primary);
 }
 .btn-primary:hover {
   box-shadow: 0 0 20px var(--gold-primary), 0 0 40px rgba(255,215,0,0.4);
@@ -119,6 +153,12 @@ button { font-family: inherit; cursor: pointer; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  position: relative;
+}
+/* Custom focus ring inside clip-path boundary */
+.btn-secondary:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--bg-primary), inset 0 0 0 4px var(--gold-primary);
 }
 .btn-secondary:hover {
   background: rgba(255,215,0,0.1);
@@ -140,4 +180,20 @@ button { font-family: inherit; cursor: pointer; }
 }
 @media (max-width: 480px) {
   .page-section { padding: var(--space-xl) var(--space-md); }
+}
+
+/* ── Reduced motion: disable ALL animations for motion-sensitive users ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* AOS: hide the library's transform/opacity transitions */
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }

@@ -61,11 +61,12 @@
 .about__chip-value { font-family: var(--font-body); font-size: 0.9rem; color: var(--text-primary); }
 .about__chip-link {
   text-decoration: none;
-  color: var(--text-primary);
-  transition: color 0.3s ease;
+  color: var(--gold-primary);
+  cursor: pointer;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 .about__chip-link:hover {
-  color: var(--gold-primary);
+  color: var(--gold-secondary);
   text-decoration: underline;
 }
 
